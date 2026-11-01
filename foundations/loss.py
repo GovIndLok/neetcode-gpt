@@ -12,7 +12,7 @@ class Solution:
         cliped_pred = np.clip(y_pred, 1e-7, 1 - 1e-7)
         ans = y_true*np.log(cliped_pred) + (1-y_true)*np.log(1 - cliped_pred)
 
-        return round(abs(np.mean(ans)), 4)
+        return -round(ans.mean(), 4)
 
     def categorical_cross_entropy(self, y_true: NDArray[np.float64], y_pred: NDArray[np.float64]) -> float:
         # y_true: one-hot encoded true labels (shape: n_samples x n_classes)
